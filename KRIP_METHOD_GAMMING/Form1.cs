@@ -37,7 +37,17 @@ namespace KRIP_METHOD_GAMMING
             {
                 key[k] = (a * key[k - 1] + b) % 32;
             }
-        
+
+            string text_key = key[0].ToString();
+
+            for(int k =1; k < text.Length; k++)
+            {
+                text_key = text_key + " " + key[k].ToString();
+            }
+
+        //    text1 = Convert.ToString(key);
+            keyBox.Text = text_key;
+
             int i = 0, y = 0, m = 0, j = 0;
             while (i < text.Length)
             {
@@ -72,43 +82,12 @@ namespace KRIP_METHOD_GAMMING
                     }
                     break;
                 }
-                //for (; j < key.Length;)
-                //{
-                //    for (int k = 0; k < ALPHA.Length; k++)
-                //    {
-                //        if (key[j] == ALPHA[k])
-                //        {
-                //            m = k;
-                //            shifr[i] = ALPHA[(y + m) % 32];
-                //            break;
-                //        }
-                //        if (key[j] == alpha[k])
-                //        {
-                //            m = k;
-                //            shifr[i] = alpha[(y + m) % 32];
-                //            break;
-                //        }
-                //        if (key[j] == ALPH[k])
-                //        {
-                //            m = k;
-                //            shifr[i] = ALPH[(y + m) % 32];
-                //            break;
-                //        }
-                //        if (key[j] == alph[k])
-                //        {
-                //            m = k;
-                //            shifr[i] = alph[(y + m) % 32];
-                //            break;
-                //        }
-                //    }
-                //    break;
-                //}
                 i++;
                 j++;
             }
 
-                string text1 = new string(shifr);
-                ShifrText.Text = text1;
+                string text2 = new string(shifr);
+                ShifrText.Text = text2;
         }
 
         private void Text_TextChanged(object sender, EventArgs e)
@@ -125,6 +104,7 @@ namespace KRIP_METHOD_GAMMING
         {
             char[] text = Text.Text.ToCharArray();
             char[] shifr = Text.Text.ToCharArray();
+            char[] text_key = keyBox.Text.ToCharArray();
             char[] ALPHA = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567".ToCharArray();
             char[] alpha = "abcdefghijklmnopqrstuvwxyz1234567".ToCharArray();
             char[] alph = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя".ToCharArray();
@@ -135,13 +115,29 @@ namespace KRIP_METHOD_GAMMING
             
 
             int[] key = new int[text.Length];
-            key[0] = (a + b) % 32;
-            for(int k = 1; k < text.Length; k++)
+            string conv_int = "  ";
+            char conv_char = ' ';
+            
+            for(int k = 0, m = 0, p = 0; k < text_key.Length; k++)
             {
-                key[k] = (a * key[k - 1] + b) % 32;
+                while (text_key[k] != ' ')
+                {
+                    conv_char = text_key[k];
+                    conv_int = conv_int.Remove(m, 1).Insert(m, conv_char.ToString());
+                    if(k < text_key.Length)
+                    0++;
+                    m++;
+                }
+
+                key[p] = Convert.ToInt32(conv_int);
+                p++;
+                conv_int = "  ";
+                m = 0;
+
+
             }
 
-            int i = 0, y = 0, m = 0, j = 0;
+            int i = 0, y = 0, j = 0;
             while (i < text.Length)
             {
                 for (; i < text.Length;)
@@ -175,37 +171,6 @@ namespace KRIP_METHOD_GAMMING
                     }
                     break;
                 }
-                //for (; j < key.Length;)
-                //{
-                //    for (int k = 0; k < ALPHA.Length; k++)
-                //    {
-                //        if (key[j] == ALPHA[k])
-                //        {
-                //            m = k;
-                //            shifr[i] = ALPHA[(y + m) % 32];
-                //            break;
-                //        }
-                //        if (key[j] == alpha[k])
-                //        {
-                //            m = k;
-                //            shifr[i] = alpha[(y + m) % 32];
-                //            break;
-                //        }
-                //        if (key[j] == ALPH[k])
-                //        {
-                //            m = k;
-                //            shifr[i] = ALPH[(y + m) % 32];
-                //            break;
-                //        }
-                //        if (key[j] == alph[k])
-                //        {
-                //            m = k;
-                //            shifr[i] = alph[(y + m) % 32];
-                //            break;
-                //        }
-                //    }
-                //    break;
-                //}
                 i++;
                 j++;
             }
