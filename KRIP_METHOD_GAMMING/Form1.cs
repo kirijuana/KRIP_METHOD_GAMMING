@@ -32,10 +32,10 @@ namespace KRIP_METHOD_GAMMING
 
 
             int[] key = new int[text.Length];
-            key[0] = (a + b) % 32;
+            key[0] = (a + b) % 33;
             for (int k = 1; k < text.Length; k++)
             {
-                key[k] = (a * key[k - 1] + b) % 32;
+                key[k] = (a * key[k - 1] + b) % 33;
             }
 
             string text_key = key[0].ToString();
@@ -58,25 +58,25 @@ namespace KRIP_METHOD_GAMMING
                         if (text[i] == ALPHA[k])
                         {
                             y = k;
-                            shifr[i] = ALPHA[(y + key[i]) % 32];
+                            shifr[i] = ALPHA[(y + key[i]) % 33];
                             break;
                         }
                         if (text[i] == alpha[k])
                         {
                             y = k;
-                            shifr[i] = alpha[(y + key[i]) % 32];
+                            shifr[i] = alpha[(y + key[i]) % 33];
                             break;
                         }
                         if (text[i] == ALPH[k])
                         {
                             y = k;
-                            shifr[i] = ALPH[(y + key[i]) % 32];
+                            shifr[i] = ALPH[(y + key[i]) % 33];
                             break;
                         }
                         if (text[i] == alph[k])
                         {
                             y = k;
-                            shifr[i] = alph[(y + key[i]) % 32];
+                            shifr[i] = alph[(y + key[i]) % 33];
                             break;
                         }
                     }
@@ -124,8 +124,12 @@ namespace KRIP_METHOD_GAMMING
                 {
                     conv_char = text_key[k];
                     conv_int = conv_int.Remove(m, 1).Insert(m, conv_char.ToString());
-                    if(k < text_key.Length)
-                    0++;
+                    if (k + 1 < text_key.Length)
+                    {
+                        k++;
+                    }
+                    else
+                        break;
                     m++;
                 }
 
@@ -147,25 +151,25 @@ namespace KRIP_METHOD_GAMMING
                         if (text[i] == ALPHA[k])
                         {
                             y = k;
-                            shifr[i] = ALPHA[(y + key[i]) % 32];
+                            shifr[i] = ALPHA[(y + 33 - key[i]) % 33];
                             break;
                         }
                         if (text[i] == alpha[k])
                         {
                             y = k;
-                            shifr[i] = alpha[(y + key[i]) % 32];
+                            shifr[i] = alpha[(y + 33 - key[i]) % 33];
                             break;
                         }
                         if (text[i] == ALPH[k])
                         {
                             y = k;
-                            shifr[i] = ALPH[(y + key[i]) % 32];
+                            shifr[i] = ALPH[(y + 33 - key[i]) % 33];
                             break;
                         }
                         if (text[i] == alph[k])
                         {
                             y = k;
-                            shifr[i] = alph[(y + key[i]) % 32];
+                            shifr[i] = alph[(y + 33 - key[i]) % 33];
                             break;
                         }
                     }

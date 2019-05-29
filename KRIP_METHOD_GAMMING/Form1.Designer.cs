@@ -55,9 +55,9 @@
             // 
             // keyBox
             // 
-            this.keyBox.Location = new System.Drawing.Point(148, 211);
+            this.keyBox.Location = new System.Drawing.Point(12, 211);
             this.keyBox.Name = "keyBox";
-            this.keyBox.Size = new System.Drawing.Size(189, 20);
+            this.keyBox.Size = new System.Drawing.Size(325, 20);
             this.keyBox.TabIndex = 12;
             this.keyBox.TextChanged += new System.EventHandler(this.keyBox_TextChanged);
             // 
